@@ -1,4 +1,7 @@
-﻿using Business.Concrete;
+﻿using Business.Abstract;
+using Business.Concrete;
+using DataAccess.Abstract;
+using DataAccess.Concrete.EntityFramework;
 using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
 
@@ -6,15 +9,42 @@ class Program
 {
     static void Main(string[] args)
     {
-        CarManager carManager = new CarManager(new InMemoryDal());
+        ICarDal carDal = new EfCarDal(); 
+        ICarService carService = new CarManager(carDal);
 
-        foreach (var car in carManager.GetAll())
+        try
         {
-            Console.WriteLine(car.Description);
+            Car newCar = new Car
+            {
+                Name = "F",
+                DailyPrice = 0
+            };
+            carService.Add(newCar);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Error: " + ex.Message);
         }
 
-        
+        try
+        {
+            Car newCar = new Car
+            {
+                Name = "Fiat",
+                DailyPrice = 100
+            };
+            carService.Add(newCar);
+            Console.WriteLine("Car added successfully!");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Error: " + ex.Message);
+        }
+
         Console.ReadLine();
     }
+
+
+    
+    }
    
-}

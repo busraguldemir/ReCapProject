@@ -7,16 +7,16 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccess.Concrete
+namespace DataAccess.Concrete.EntityFramework
 {
-    public class CarDal : ICarDal
+    public class EfBrandDal : IBrandDal
     {
-        public void Add(Car car)
+        public void Add(Brand car)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(Car car)
+        public void Delete(Brand car)
         {
             throw new NotImplementedException();
         }
@@ -26,27 +26,17 @@ namespace DataAccess.Concrete
             throw new NotImplementedException();
         }
 
-        public Car Get()
+        public Brand Get(Expression<Func<Car, bool>> filter = null)
         {
             throw new NotImplementedException();
         }
 
-        public Car Get(Expression<Func<Car, bool>> filter = null)
+        public List<Brand> GetAll(Expression<Func<Brand, bool>> filter = null)
         {
             throw new NotImplementedException();
         }
 
-        public List<Car> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Car> GetAll(Expression<Func<Car, bool>> filter = null)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Car GetById(int id)
+        public Brand GetById(int id)
         {
             throw new NotImplementedException();
         }
@@ -61,7 +51,7 @@ namespace DataAccess.Concrete
             throw new NotImplementedException();
         }
 
-        public void Update(Car car)
+        public void Update(Brand car)
         {
             throw new NotImplementedException();
         }
